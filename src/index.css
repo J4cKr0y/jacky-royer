@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Modern Dark Portfolio Theme */
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 225 25% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 225 25% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 195 100% 50%;
+    --primary-foreground: 222 84% 4.9%;
+
+    --secondary: 225 25% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 225 25% 12%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 195 100% 60%;
+    --accent-foreground: 222 84% 4.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 225 25% 15%;
+    --input: 225 25% 12%;
+    --ring: 195 100% 50%;
+
+    /* Custom Portfolio Colors */
+    --portfolio-accent: 195 100% 50%;
+    --portfolio-accent-glow: 195 100% 60%;
+    --portfolio-cyan: 180 100% 50%;
+    --portfolio-purple: 260 100% 70%;
+    --portfolio-orange: 25 100% 60%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--portfolio-accent)) 0%, hsl(var(--portfolio-cyan)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(225 25% 6%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(var(--portfolio-accent) / 0.15) 0%, transparent 70%);
+    
+    /* Shadows & Effects */
+    --shadow-card: 0 8px 32px hsl(var(--portfolio-accent) / 0.1);
+    --shadow-glow: 0 0 20px hsl(var(--portfolio-accent) / 0.3);
+    --shadow-hover: 0 12px 40px hsl(var(--portfolio-accent) / 0.2);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode inherits from root */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .portfolio-card {
+    @apply bg-gradient-to-br from-card to-card/80 border border-border/50 rounded-2xl p-6;
+    @apply backdrop-blur-sm transition-all duration-300 hover:border-primary/30;
+    box-shadow: var(--shadow-card);
+  }
+
+  .portfolio-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-effect {
+    position: relative;
+  }
+
+  .glow-effect::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: var(--gradient-primary);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glow-effect:hover::before {
+    opacity: 1;
+  }
+
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@layer utilities {
+  .text-portfolio-accent {
+    color: hsl(var(--portfolio-accent));
+  }
+  
+  .text-portfolio-cyan {
+    color: hsl(var(--portfolio-cyan));
+  }
+  
+  .text-portfolio-purple {
+    color: hsl(var(--portfolio-purple));
+  }
+  
+  .bg-portfolio-accent {
+    background-color: hsl(var(--portfolio-accent));
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 20px hsl(var(--portfolio-accent) / 0.3); }
+  100% { box-shadow: 0 0 30px hsl(var(--portfolio-accent) / 0.6); }
+}
