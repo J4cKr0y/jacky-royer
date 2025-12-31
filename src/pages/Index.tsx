@@ -2,7 +2,7 @@ import { Navigation } from '@/components/portfolio/Navigation';
 import { HeroSection } from '@/components/portfolio/HeroSection';
 import { AboutSection } from '@/components/portfolio/AboutSection';
 import { TechStack } from '@/components/portfolio/TechStack';
-import { ProjectsSection } from '@/components/portfolio/ProjectsSection';
+import { ProjectsSection } from '@/components/Projects/ProjectsSection';
 import { ContactSection } from '@/components/portfolio/ContactSection';
 
 const Index = () => {
