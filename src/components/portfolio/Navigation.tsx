@@ -64,12 +64,16 @@ export const Navigation = () => {
             ))}
             
             <Button 
-              size="sm" 
-              className="bg-primary hover:bg-primary/90 glow-effect"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              CV
-            </Button>
+			  asChild
+			  size="sm" 
+			  className="bg-primary hover:bg-primary/90 glow-effect"
+			>
+			  <a href={`${import.meta.env.BASE_URL}cv-jacky-royer.pdf`} download>
+				<Download className="mr-2 h-4 w-4" />
+				CV
+			  </a>
+			</Button>
+
           </div>
 
           {/* Mobile Menu Button */}
@@ -98,12 +102,16 @@ export const Navigation = () => {
               ))}
               
               <Button 
-                size="sm" 
-                className="w-full mt-4 bg-primary hover:bg-primary/90"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                Télécharger CV
-              </Button>
+			    asChild
+			    size="sm" 
+			    className="w-full mt-4 bg-primary hover:bg-primary/90"
+			  >
+			    <a href={`${import.meta.env.BASE_URL}cv-jacky-royer.pdf`} download>
+				  <Download className="mr-2 h-4 w-4" />
+				  Télécharger CV
+				</a>
+			  </Button>
+
             </div>
           </div>
         )}

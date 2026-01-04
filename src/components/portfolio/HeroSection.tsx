@@ -6,6 +6,14 @@ import jackyProfile from '@/assets/jacky-profile.jpg';
 export const HeroSection = () => {
   const [mounted, setMounted] = useState(false);
 
+const handleContactClick = () => {
+  const element = document.querySelector('#contact');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -55,21 +63,27 @@ export const HeroSection = () => {
               {/* CTA Buttons */}
               <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <Button 
-                  size="lg" 
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3 glow-effect"
-                >
-                  <Mail className="mr-2 h-5 w-5" />
-                  Discutons de votre projet
-                </Button>
+  size="lg" 
+  onClick={handleContactClick}
+  className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3 glow-effect"
+>
+  <Mail className="mr-2 h-5 w-5" />
+  Discutons de votre projet
+</Button>
+
                 
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-primary/30 hover:border-primary/60 hover:bg-primary/10 font-semibold px-8 py-3"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Télécharger CV
-                </Button>
+                <Button
+				  asChild
+				  variant="outline"
+				  size="lg"
+				 className="border-primary/30 hover:border-primary/60 hover:bg-primary/10 font-semibold px-8 py-3"
+				>
+				  <a href={`${import.meta.env.BASE_URL}cv-jacky-royer.pdf`} download>
+				  <Download className="mr-2 h-5 w-5" />
+				  Télécharger CV
+				  </a>
+				</Button>
+
               </div>
 
               {/* Social Links */}
